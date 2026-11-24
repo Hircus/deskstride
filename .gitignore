@@ -1,0 +1,40 @@
+# Gradle / build output
+.gradle/
+build/
+.kotlin/
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.ap_
+*.apks
+*.xapk
+*.dex
+output-metadata.json
+
+# Local machine config (SDK path, signing secrets)
+local.properties
+keystore.properties
+*.jks
+*.keystore
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.fleet/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and Bluetooth captures (may contain device addresses)
+*.log
+*.hprof
+*.btsnoop
+btsnoop_hci*
+
+# Reverse-engineering workspace: third-party APKs and decompiled code, never publish
+re/

@@ -1,0 +1,22 @@
+<resources>
+    <string name="linking_phone">Collegamento al telefono…</string>
+    <string name="status_open_phone">Apri DeskStride sul telefono</string>
+    <string name="status_not_connected">Tapis non connesso</string>
+    <string name="status_paused">In pausa</string>
+    <string name="status_moving">In movimento</string>
+    <string name="status_ready">Pronto</string>
+    <string name="steps_count">%1$s passi</string>
+    <string name="speed_down">Diminuisci velocità</string>
+    <string name="speed_up">Aumenta velocità</string>
+    <string name="btn_connect">Connetti</string>
+    <string name="btn_start">Avvia</string>
+    <string name="btn_confirm">Conferma</string>
+    <string name="btn_pause">Pausa</string>
+    <string name="btn_resume">Riprendi</string>
+    <string name="btn_stop_finish">Ferma e termina</string>
+    <string name="tile_today">Oggi</string>
+    <string name="tile_in_progress">● In corso</string>
+    <string name="tile_walk">Cammina</string>
+    <string name="tile_open">Apri</string>
+    <string name="tile_summary">%1$s passi · %2$d min</string>
+</resources>

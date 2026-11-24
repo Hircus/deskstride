@@ -1,0 +1,137 @@
+<resources>
+    <string name="app_name" translatable="false">DeskStride</string>
+
+    <!-- widgets -->
+    <string name="widget_today_name">DeskStride · Today</string>
+    <string name="widget_week_name">DeskStride · Week</string>
+    <string name="widget_last_name">DeskStride · Last activity</string>
+    <string name="widget_quick_name">DeskStride · Walk</string>
+    <string name="widget_today_desc">Today\'s steps, km and minutes</string>
+    <string name="widget_week_desc">Steps over the last 7 days</string>
+    <string name="widget_last_desc">Summary of your last workout</string>
+    <string name="widget_quick_desc">Connect to the treadmill with one tap and follow your workout live</string>
+    <string name="widget_today_label">TODAY</string>
+    <string name="widget_steps_today">steps today</string>
+    <string name="widget_week_label">steps in 7 days</string>
+    <string name="widget_week_sub">steps · %1$s km in 7 days</string>
+    <string name="widget_week_sub_compact">steps · %1$s km\nin 7 days</string>
+    <string name="widget_last_empty_title">No activity</string>
+    <string name="widget_last_empty_sub">Your next workout will show up here</string>
+    <string name="widget_quick_title">Walk</string>
+    <string name="widget_quick_tap">Tap to connect</string>
+    <string name="widget_quick_ready">Ready to go</string>
+    <string name="live_in_progress">● in progress</string>
+
+    <!-- common -->
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="close">Close</string>
+    <string name="send">Send</string>
+    <string name="retry">Retry</string>
+    <string name="delete">Delete</string>
+    <string name="back">Back</string>
+    <string name="steps_count">%1$s steps</string>
+    <string name="label_steps">steps</string>
+    <string name="label_time">time</string>
+
+    <!-- connection status -->
+    <string name="status_disconnected">Not connected</string>
+    <string name="status_bt_off">Bluetooth is off</string>
+    <string name="status_searching">Searching…</string>
+    <string name="status_connecting">Connecting…</string>
+    <string name="status_reconnecting">Reconnecting…</string>
+    <string name="status_connected">Connected</string>
+    <string name="status_scan_failed">Scan failed (%1$d)</string>
+    <string name="status_service_not_found">Service not found</string>
+    <string name="error_bt_denied">Bluetooth permissions denied</string>
+    <string name="error_hc_missing">Health Connect is not installed</string>
+
+    <!-- main screen -->
+    <string name="history_title">Activities</string>
+    <string name="last_activity">Last activity</string>
+    <string name="stat_time">Time</string>
+    <string name="stat_distance">Distance</string>
+    <string name="stat_steps">Steps</string>
+    <string name="stat_calories">Calories</string>
+    <string name="stat_duration">Duration</string>
+    <string name="stat_pace">Pace</string>
+    <string name="stat_avg_speed">Avg speed</string>
+    <string name="stat_max_speed">Max speed</string>
+    <string name="stat_avg_hr">Avg heart rate</string>
+    <string name="stat_max_hr">Max heart rate</string>
+    <string name="phase_waiting">Waiting</string>
+    <string name="phase_ready">Ready · start the treadmill</string>
+    <string name="phase_paused">Paused</string>
+    <string name="phase_moving">Moving</string>
+    <string name="phase_moving_joined">Moving · joined mid-session</string>
+    <string name="phase_speeding_up">Speeding up → %1$s km/h</string>
+    <string name="phase_slowing_down">Slowing down → %1$s km/h</string>
+    <string name="phase_saved_stop_belt">Workout saved · stop the belt</string>
+    <string name="target_set">Set %1$s km/h</string>
+    <string name="target_none">Set —</string>
+    <string name="speed_down">Decrease speed</string>
+    <string name="speed_up">Increase speed</string>
+    <string name="speed_title">Speed (km/h)</string>
+    <string name="speed_range">From %1$s to %2$s km/h</string>
+    <string name="speed_set">Set</string>
+    <string name="start_title">Start the belt?</string>
+    <string name="start_message">The treadmill will count down and start at %1$s km/h. Get ready.</string>
+    <string name="start_confirm">Start</string>
+    <string name="start_belt_first">Start the belt first</string>
+    <string name="session_too_short">Session too short, not saved</string>
+    <string name="btn_start_belt">Start belt</string>
+    <string name="btn_resume_at">Resume at %1$s km/h</string>
+    <string name="btn_pause">Pause</string>
+    <string name="btn_stop_finish">Stop and finish</string>
+    <string name="btn_stop_belt">Stop belt</string>
+    <string name="btn_connect">Connect to treadmill</string>
+    <string name="btn_connect_to">Connect to %1$s</string>
+    <string name="btn_disconnect">Disconnect</string>
+    <string name="btn_scan">Find treadmills</string>
+    <string name="btn_hc_permissions">Health Connect permissions</string>
+    <string name="btn_hc_open">✓ Open DeskStride in Health Connect</string>
+    <string name="btn_profile">Height %1$d cm · weight %2$d kg</string>
+
+    <!-- profile -->
+    <string name="profile_title">Your profile</string>
+    <string name="profile_message">Height is used to estimate step length when the treadmill doesn\'t report steps; the treadmill uses weight for calories. Turn off sending steps if your phone or watch already counts them, otherwise they show up twice in Health Connect.</string>
+    <string name="profile_height">Height (cm)</string>
+    <string name="profile_weight">Weight (kg)</string>
+    <string name="profile_send_steps">Send steps to Health Connect</string>
+
+    <!-- scanner -->
+    <string name="scan_searching">Searching for treadmills…</string>
+    <string name="scan_found">Treadmills found (%1$d)</string>
+    <string name="scan_any">Any PitPat</string>
+    <string name="scan_unnamed">Unnamed treadmill</string>
+    <string name="scan_saved">" · saved"</string>
+    <string name="scan_signal">%1$s · signal %2$d dBm</string>
+
+    <!-- history and report -->
+    <string name="history_empty">No activities yet.\nYour report will show up here after a workout.</string>
+    <string name="report_title">Treadmill walk</string>
+    <string name="report_estimated">Estimated start: connected to a belt that was already moving</string>
+    <string name="steps_measured">from treadmill</string>
+    <string name="steps_estimated">estimated</string>
+    <string name="delete_from_history">Delete from history</string>
+    <string name="delete_title">Delete this activity?</string>
+    <string name="delete_message">It\'s only removed from the DeskStride history. Data already sent to Health Connect stays there.</string>
+
+    <!-- Health Connect -->
+    <string name="hc_session_title">Treadmill</string>
+    <string name="hc_unavailable">Health Connect not available</string>
+    <string name="hc_missing_permissions">Health Connect permissions missing</string>
+    <string name="hc_sent">Sent to Health Connect</string>
+    <string name="hc_failed">Not sent: %1$s</string>
+    <string name="hc_sending">Sending…</string>
+    <string name="hc_not_sent">Not sent yet</string>
+    <string name="hc_sent_short">✓ Health Connect</string>
+    <string name="hc_failed_short">✗ not sent</string>
+    <string name="hc_pending_short">waiting to send</string>
+    <string name="hc_to_send">To send</string>
+
+    <!-- notification -->
+    <string name="notif_channel">Workout in progress</string>
+    <string name="notif_in_progress">In progress</string>
+    <string name="notif_tap_to_open">Tap to open DeskStride</string>
+</resources>

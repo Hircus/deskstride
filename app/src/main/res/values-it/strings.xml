@@ -1,0 +1,135 @@
+<resources>
+    <!-- widget -->
+    <string name="widget_today_name">DeskStride · Oggi</string>
+    <string name="widget_week_name">DeskStride · Settimana</string>
+    <string name="widget_last_name">DeskStride · Ultima attività</string>
+    <string name="widget_quick_name">DeskStride · Cammina</string>
+    <string name="widget_today_desc">Passi, km e minuti di oggi</string>
+    <string name="widget_week_desc">Passi degli ultimi 7 giorni</string>
+    <string name="widget_last_desc">Riepilogo dell\'ultimo allenamento</string>
+    <string name="widget_quick_desc">Collegati al tapis con un tocco e segui l\'allenamento in diretta</string>
+    <string name="widget_today_label">OGGI</string>
+    <string name="widget_steps_today">passi oggi</string>
+    <string name="widget_week_label">passi in 7 giorni</string>
+    <string name="widget_week_sub">passi · %1$s km in 7 giorni</string>
+    <string name="widget_week_sub_compact">passi · %1$s km\nin 7 giorni</string>
+    <string name="widget_last_empty_title">Nessuna attività</string>
+    <string name="widget_last_empty_sub">Il prossimo allenamento comparirà qui</string>
+    <string name="widget_quick_title">Cammina</string>
+    <string name="widget_quick_tap">Tocca per collegarti</string>
+    <string name="widget_quick_ready">Pronto a partire</string>
+    <string name="live_in_progress">● in corso</string>
+
+    <!-- comuni -->
+    <string name="cancel">Annulla</string>
+    <string name="save">Salva</string>
+    <string name="close">Chiudi</string>
+    <string name="send">Invia</string>
+    <string name="retry">Riprova</string>
+    <string name="delete">Elimina</string>
+    <string name="back">Indietro</string>
+    <string name="steps_count">%1$s passi</string>
+    <string name="label_steps">passi</string>
+    <string name="label_time">tempo</string>
+
+    <!-- stato connessione -->
+    <string name="status_disconnected">Non connesso</string>
+    <string name="status_bt_off">Bluetooth spento</string>
+    <string name="status_searching">Ricerca…</string>
+    <string name="status_connecting">Connessione…</string>
+    <string name="status_reconnecting">Riconnessione…</string>
+    <string name="status_connected">Connesso</string>
+    <string name="status_scan_failed">Scansione fallita (%1$d)</string>
+    <string name="status_service_not_found">Servizio non trovato</string>
+    <string name="error_bt_denied">Permessi Bluetooth negati</string>
+    <string name="error_hc_missing">Health Connect assente</string>
+
+    <!-- schermata principale -->
+    <string name="history_title">Attività</string>
+    <string name="last_activity">Ultima attività</string>
+    <string name="stat_time">Tempo</string>
+    <string name="stat_distance">Distanza</string>
+    <string name="stat_steps">Passi</string>
+    <string name="stat_calories">Calorie</string>
+    <string name="stat_duration">Durata</string>
+    <string name="stat_pace">Ritmo</string>
+    <string name="stat_avg_speed">Vel. media</string>
+    <string name="stat_max_speed">Vel. max</string>
+    <string name="stat_avg_hr">Battito medio</string>
+    <string name="stat_max_hr">Battito max</string>
+    <string name="phase_waiting">In attesa</string>
+    <string name="phase_ready">Pronto · avvia il tapis</string>
+    <string name="phase_paused">In pausa</string>
+    <string name="phase_moving">In movimento</string>
+    <string name="phase_moving_joined">In movimento · ripreso in corsa</string>
+    <string name="phase_speeding_up">Accelera → %1$s km/h</string>
+    <string name="phase_slowing_down">Rallenta → %1$s km/h</string>
+    <string name="phase_saved_stop_belt">Allenamento salvato · ferma il nastro</string>
+    <string name="target_set">Impostata %1$s km/h</string>
+    <string name="target_none">Impostata —</string>
+    <string name="speed_down">Diminuisci velocità</string>
+    <string name="speed_up">Aumenta velocità</string>
+    <string name="speed_title">Velocità (km/h)</string>
+    <string name="speed_range">Da %1$s a %2$s km/h</string>
+    <string name="speed_set">Imposta</string>
+    <string name="start_title">Avviare il nastro?</string>
+    <string name="start_message">Il tapis farà il conto alla rovescia e partirà a %1$s km/h. Tieniti pronto.</string>
+    <string name="start_confirm">Avvia</string>
+    <string name="start_belt_first">Avvia prima il nastro</string>
+    <string name="session_too_short">Sessione troppo breve, non salvata</string>
+    <string name="btn_start_belt">Avvia nastro</string>
+    <string name="btn_resume_at">Riprendi a %1$s km/h</string>
+    <string name="btn_pause">Pausa</string>
+    <string name="btn_stop_finish">Ferma e termina</string>
+    <string name="btn_stop_belt">Ferma nastro</string>
+    <string name="btn_connect">Connetti al tapis roulant</string>
+    <string name="btn_connect_to">Connetti a %1$s</string>
+    <string name="btn_disconnect">Disconnetti</string>
+    <string name="btn_scan">Cerca tapis roulant</string>
+    <string name="btn_hc_permissions">Permessi Health Connect</string>
+    <string name="btn_hc_open">✓ Apri DeskStride in Health Connect</string>
+    <string name="btn_profile">Altezza %1$d cm · peso %2$d kg</string>
+
+    <!-- profilo -->
+    <string name="profile_title">Il tuo profilo</string>
+    <string name="profile_message">L\'altezza serve a stimare il passo se il tapis non manda i passi; il peso lo usa il tapis per le calorie. Togli l\'invio dei passi se telefono o orologio li contano già: in Health Connect risulterebbero doppi.</string>
+    <string name="profile_height">Altezza (cm)</string>
+    <string name="profile_weight">Peso (kg)</string>
+    <string name="profile_send_steps">Invia i passi a Health Connect</string>
+
+    <!-- scanner -->
+    <string name="scan_searching">Ricerca tapis roulant…</string>
+    <string name="scan_found">Tapis trovati (%1$d)</string>
+    <string name="scan_any">Qualsiasi PitPat</string>
+    <string name="scan_unnamed">Tapis senza nome</string>
+    <string name="scan_saved">" · salvato"</string>
+    <string name="scan_signal">%1$s · segnale %2$d dBm</string>
+
+    <!-- storico e report -->
+    <string name="history_empty">Nessuna attività ancora.\nAl termine di un allenamento il report comparirà qui.</string>
+    <string name="report_title">Camminata su tapis roulant</string>
+    <string name="report_estimated">Inizio stimato: collegato a tapis già in movimento</string>
+    <string name="steps_measured">dal tapis</string>
+    <string name="steps_estimated">stimati</string>
+    <string name="delete_from_history">Elimina dallo storico</string>
+    <string name="delete_title">Eliminare questa attività?</string>
+    <string name="delete_message">Viene rimossa solo dallo storico di DeskStride. I dati già inviati a Health Connect restano lì.</string>
+
+    <!-- Health Connect -->
+    <string name="hc_session_title">Tapis roulant</string>
+    <string name="hc_unavailable">Health Connect non disponibile</string>
+    <string name="hc_missing_permissions">Permessi Health Connect mancanti</string>
+    <string name="hc_sent">Inviata a Health Connect</string>
+    <string name="hc_failed">Non inviata: %1$s</string>
+    <string name="hc_sending">Invio in corso…</string>
+    <string name="hc_not_sent">Non ancora inviata</string>
+    <string name="hc_sent_short">✓ Health Connect</string>
+    <string name="hc_failed_short">✗ non inviata</string>
+    <string name="hc_pending_short">in attesa di invio</string>
+    <string name="hc_to_send">Da inviare</string>
+
+    <!-- notifica -->
+    <string name="notif_channel">Allenamento in corso</string>
+    <string name="notif_in_progress">In corso</string>
+    <string name="notif_tap_to_open">Tocca per aprire DeskStride</string>
+</resources>
