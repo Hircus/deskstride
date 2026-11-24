@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
 
 # DeskStride
 
@@ -18,9 +18,9 @@ and send every walk to Health Connect (and from there to Samsung Health, Google 
 
 ## Features
 
-### ðŸ“± Phone
+### 📱 Phone
 - **Live dashboard**: speed with a scrolling chart, time, distance, steps and calories
-- **Full control**: start (with confirmation), pause/resume, stop; change speed with âˆ’ / + (hold to repeat) or type an exact value
+- **Full control**: start (with confirmation), pause/resume, stop; change speed with − / + (hold to repeat) or type an exact value
 - **Treadmill scanner**: pick your treadmill once and DeskStride reconnects to it from then on
 - **Runs in the background**: a foreground service keeps the connection alive with the screen off; it reconnects automatically if the treadmill drops
 - **Crash-safe**: the current session is saved every 30 s and recovered if the app is killed
@@ -28,7 +28,7 @@ and send every walk to Health Connect (and from there to Samsung Health, Google 
 - **Health Connect export**: workout, distance, speed, active calories, steps (optional) and heart rate, without duplicates on re-send
 - **Home screen widgets**: Today, Last 7 days, Last activity, and a one-tap "Walk" widget that connects and shows live stats
 
-### âŒš Watch
+### ⌚ Watch
 - **Remote control**: start, pause and stop the belt, and change speed with the rotating bezel
 - **Safe start**: tap twice to start, so the belt never starts by accident
 - **Heart rate**: measured during the walk and added to the session
@@ -82,15 +82,15 @@ adb -s <watch> install wear/build/outputs/apk/debug/wear-debug.apk
 ## How it works
 
 ```
- â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  BLE 0xFBA0   â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  Data Layer  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
- â”‚   PitPat     â”‚ â—„â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â–º  â”‚   DeskStride phone   â”‚ â—„â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â–º â”‚  DeskStride  â”‚
- â”‚   treadmill  â”‚ poll / notify â”‚   (Walk + service)   â”‚ cmd / state  â”‚    watch     â”‚
- â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜               â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜              â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
-                                           â”‚ write
-                                           â–¼
-                                 â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-                                 â”‚    Health Connect    â”‚ â”€â”€â–º Samsung Health, Fit, â€¦
-                                 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+ ┌──────────────┐  BLE 0xFBA0   ┌──────────────────────┐  Data Layer  ┌──────────────┐
+ │   PitPat     │ ◄──────────►  │   DeskStride phone   │ ◄──────────► │  DeskStride  │
+ │   treadmill  │ poll / notify │   (Walk + service)   │ cmd / state  │    watch     │
+ └──────────────┘               └──────────┬───────────┘              └──────────────┘
+                                           │ write
+                                           ▼
+                                 ┌──────────────────────┐
+                                 │    Health Connect    │ ──► Samsung Health, Fit, …
+                                 └──────────────────────┘
 ```
 
 - The phone polls the treadmill every 500 ms (`6A 05 FD F8 43` on `0xFBA1`) and gets 60-byte status packets back
@@ -98,7 +98,7 @@ adb -s <watch> install wear/build/outputs/apk/debug/wear-debug.apk
 - `Walk` holds the connection and the session for the whole process; `WalkService` keeps the process alive.
 - `SessionTracker` turns packets into sessions: it handles pauses, connecting to a belt that is already moving,
   counter resets and leftover steps.
-- The watch is a thin remote: it sends commands (`start`, `pause`, `speed:2.5`, `hr:98`, â€¦) and draws the state the
+- The watch is a thin remote: it sends commands (`start`, `pause`, `speed:2.5`, `hr:98`, …) and draws the state the
   phone sends back.
 
 The full byte-level protocol is in [**docs/PROTOCOL.md**](docs/PROTOCOL.md).
@@ -110,7 +110,7 @@ app/                      phone app (io.github.deskstride)
   Walk.kt                 connection + session + commands, lives in the process
   TreadmillBle.kt         BLE scan, GATT, command queue, auto-reconnect
   TreadmillPacket.kt      packet parser and command builder
-  SessionTracker.kt       packets â†’ sessions
+  SessionTracker.kt       packets → sessions
   HealthWriter.kt         Health Connect export
   WearBridge.kt           Data Layer bridge to the watch
   widget/                 home screen widgets
@@ -125,7 +125,7 @@ docs/                     protocol notes and hardware test checklist
 ```
 
 Unit tests cover packet parsing (against real captures), command bytes, session tracking and the
-phone â†” watch message format. Hardware checks are listed in [docs/TESTING.md](docs/TESTING.md).
+phone ↔ watch message format. Hardware checks are listed in [docs/TESTING.md](docs/TESTING.md).
 
 ## Localization
 

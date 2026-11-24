@@ -1,4 +1,4 @@
-﻿# PitPat BLE protocol
+# PitPat BLE protocol
 
 Notes on the Bluetooth LE protocol spoken by PitPat walking pads (tested on the **PitPat-T01 / BA10-B**).
 They come from an HCI snoop log of the official app and from studying how PitPat 4.25 parses packets,
@@ -24,7 +24,7 @@ Status replies are 60 bytes, so request an MTU of at least 63 (DeskStride asks f
 | byte | field |
 |---|---|
 | 2 | error code |
-| 3-4 | actual speed (km/h Ã—1000) |
+| 3-4 | actual speed (km/h ×1000) |
 | 5-6 | target speed |
 | 7-10 | distance (u32, m) |
 | 11 | current incline |
@@ -72,7 +72,7 @@ Every frame is `6A <len> ... <xor> 43`, where `<xor>` is the XOR of bytes 1..n-3
 | 0-1 | `6A 17` |
 | 2 | goal type (0 = none; F3 units; F5 reverse/vibration) |
 | 3-5 | goal value (u24) |
-| 6-7 | speed (km/h Ã—1000) |
+| 6-7 | speed (km/h ×1000) |
 | 8 | acceleration time (PitPat sends 5 to start/stop, 1 to change speed) |
 | 9 | incline |
 | 10 | user weight in kg (used for kcal) |

@@ -1,4 +1,4 @@
-﻿package io.github.deskstride
+package io.github.deskstride
 
 /** Belt state, byte 26 bits 3-5 of long packets. */
 enum class BeltState { STOPPED, RUNNING, PAUSED, COUNTDOWN, OTHER }
