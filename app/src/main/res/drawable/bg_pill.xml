@@ -1,4 +1,9 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
-    <solid android:color="@color/card" />
-    <corners android:radius="100dp" />
-</shape>
+<!-- ripple only shows on clickable views; plain pills (icons) look unchanged -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="?attr/colorControlHighlight">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/card" />
+            <corners android:radius="100dp" />
+        </shape>
+    </item>
+</ripple>

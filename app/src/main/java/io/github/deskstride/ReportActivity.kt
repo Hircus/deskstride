@@ -37,7 +37,7 @@ class ReportActivity : AppCompatActivity() {
         stored = store.load(intent.getLongExtra(EXTRA_ID, -1)) ?: run { finish(); return }
         val s = stored.session
 
-        findViewById<View>(R.id.btnBack).setOnClickListener { finish() }
+        findViewById<View>(R.id.btnBack).onTap { finish() }
         findViewById<TextView>(R.id.day).text = Fmt.day(s.startMs)
         findViewById<TextView>(R.id.hours).text = "${Fmt.time(s.startMs)} – ${Fmt.time(s.endMs)}"
         findViewById<TextView>(R.id.duration).text = Fmt.duration(s.durationS)
@@ -61,8 +61,8 @@ class ReportActivity : AppCompatActivity() {
         hcDot = findViewById(R.id.hcDot)
         hcStatus = findViewById(R.id.hcStatus)
         btnSend = findViewById(R.id.btnSend)
-        btnSend.setOnClickListener { send() }
-        findViewById<View>(R.id.btnDelete).setOnClickListener { confirmDelete() }
+        btnSend.onTap { send() }
+        findViewById<View>(R.id.btnDelete).onTap { confirmDelete() }
 
         showHc(stored.hc)
         if (intent.getBooleanExtra(EXTRA_SEND, false) && savedInstanceState == null) send()

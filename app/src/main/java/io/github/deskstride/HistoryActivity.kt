@@ -17,7 +17,7 @@ class HistoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history)
-        findViewById<View>(R.id.btnBack).setOnClickListener { finish() }
+        findViewById<View>(R.id.btnBack).onTap { finish() }
     }
 
     override fun onResume() {
@@ -52,7 +52,7 @@ class HistoryActivity : AppCompatActivity() {
             }
             row.findViewById<View>(R.id.hcDot).backgroundTintList =
                 ColorStateList.valueOf(ContextCompat.getColor(this, c))
-            row.setOnClickListener { startActivity(ReportActivity.intent(this, st.id)) }
+            row.onTap { startActivity(ReportActivity.intent(this, st.id)) }
             list.addView(row)
         }
     }
