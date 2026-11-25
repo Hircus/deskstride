@@ -16,15 +16,19 @@ import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.health.connect.client.PermissionController
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.launch
 
 /** UI only: connection, session and commands live in [Walk], which outlives the Activity. */
@@ -51,10 +55,9 @@ class MainActivity : AppCompatActivity(), Walk.Listener {
     private lateinit var btnMinus: MaterialButton
     private lateinit var btnPlus: MaterialButton
     private lateinit var btnConnect: MaterialButton
-    private lateinit var btnHealth: MaterialButton
-    private lateinit var btnHeight: MaterialButton
     private lateinit var btnPause: MaterialButton
-    private lateinit var btnScan: MaterialButton
+    private lateinit var drawer: DrawerLayout
+    private lateinit var nav: NavigationView
 
     private val bluetoothPerms = arrayOf(Manifest.permission.BLUETOOTH_SCAN, Manifest.permission.BLUETOOTH_CONNECT)
     /** on connect we also ask for notifications (the service's one); if denied we carry on anyway */
@@ -101,15 +104,31 @@ class MainActivity : AppCompatActivity(), Walk.Listener {
         btnMinus = findViewById(R.id.btnMinus)
         btnPlus = findViewById(R.id.btnPlus)
         btnConnect = findViewById(R.id.btnConnect)
-        btnHealth = findViewById(R.id.btnHealth)
-        btnHeight = findViewById(R.id.btnHeight)
         btnPause = findViewById(R.id.btnPause)
-        btnScan = findViewById(R.id.btnScan)
+        drawer = findViewById(R.id.drawer)
+        nav = findViewById(R.id.nav)
         btnPause.onTap { Walk.pause() }
-        btnScan.onTap { scanPerms.launch(bluetoothPerms) }
 
-        findViewById<View>(R.id.btnHistory).onTap {
-            startActivity(Intent(this, HistoryActivity::class.java))
+        findViewById<View>(R.id.btnMenu).onTap { drawer.openDrawer(GravityCompat.START) }
+        // back closes the drawer instead of leaving the app
+        val closeDrawer = onBackPressedDispatcher.addCallback(this, false) { drawer.closeDrawers() }
+        drawer.addDrawerListener(object : DrawerLayout.SimpleDrawerListener() {
+            override fun onDrawerOpened(v: View) { closeDrawer.isEnabled = true }
+            override fun onDrawerClosed(v: View) { closeDrawer.isEnabled = false }
+        })
+        nav.setNavigationItemSelectedListener { item ->
+            drawer.closeDrawers()
+            when (item.itemId) {
+                R.id.navProfile -> askProfile()
+                R.id.navScan -> scanPerms.launch(bluetoothPerms)
+                R.id.navHistory -> startActivity(Intent(this, HistoryActivity::class.java))
+                R.id.navHealth -> when {
+                    !HealthWriter.available(this) -> Walk.showError(getString(R.string.error_hc_missing))
+                    hcGranted -> HealthWriter.openAppPage(this)
+                    else -> hcPerms.launch(HealthWriter.PERMISSIONS)
+                }
+            }
+            false // actions, not destinations: no item stays highlighted
         }
         btnFinish.onTap { Walk.stopAndFinish() }
         btnStart.onTap { confirmStart() }
@@ -119,21 +138,12 @@ class MainActivity : AppCompatActivity(), Walk.Listener {
         btnConnect.onTap {
             if (Walk.ble.active) Walk.disconnect() else blePerms.launch(connectPerms)
         }
-        btnHealth.onTap {
-            when {
-                !HealthWriter.available(this) -> Walk.showError(getString(R.string.error_hc_missing))
-                hcGranted -> HealthWriter.openAppPage(this)
-                else -> hcPerms.launch(HealthWriter.PERMISSIONS)
-            }
-        }
-        btnHeight.onTap { askProfile() }
 
         Walk.listener = this
         // reopened mid-session: redraw the chart from what Walk has collected
         if (tracker.running) chart.setAll(tracker.samples.map { it.second })
         Walk.lastPacket?.let { animateSpeed(it.actualKmh) }
         render()
-        refreshHeight()
         handleWidgetIntent(intent)
     }
 
@@ -347,17 +357,13 @@ class MainActivity : AppCompatActivity(), Walk.Listener {
     }
 
     private fun refreshHealthButton() {
-        if (!HealthWriter.available(this)) { btnHealth.setText(R.string.hc_unavailable); return }
+        val item = nav.menu.findItem(R.id.navHealth)
+        if (!HealthWriter.available(this)) { item.setTitle(R.string.hc_unavailable); return }
         lifecycleScope.launch {
             val ok = runCatching { health.hasPermissions() }.getOrDefault(false)
             hcGranted = ok
-            btnHealth.setText(if (ok) R.string.btn_hc_open else R.string.btn_hc_permissions)
-            btnHealth.setTextColor(color(if (ok) R.color.accent else R.color.text))
+            item.setTitle(if (ok) R.string.btn_hc_open else R.string.btn_hc_permissions)
         }
-    }
-
-    private fun refreshHeight() {
-        btnHeight.text = getString(R.string.btn_profile, Walk.heightCm, Walk.weightKg)
     }
 
     private fun askProfile() {
@@ -388,7 +394,6 @@ class MainActivity : AppCompatActivity(), Walk.Listener {
                 h.editText?.text.toString().toIntOrNull()?.takeIf { it in 100..230 }?.let { Walk.heightCm = it }
                 w.editText?.text.toString().toIntOrNull()?.takeIf { it in 30..200 }?.let { Walk.weightKg = it }
                 Walk.setSendSteps(stepsBox.isChecked)
-                refreshHeight()
             }
             .setNegativeButton(R.string.cancel, null)
             .show()

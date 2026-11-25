@@ -90,7 +90,6 @@
     <string name="btn_scan">Find treadmills</string>
     <string name="btn_hc_permissions">Health Connect permissions</string>
     <string name="btn_hc_open">✓ Open DeskStride in Health Connect</string>
-    <string name="btn_profile">Height %1$d cm · weight %2$d kg</string>
 
     <!-- profile -->
     <string name="profile_title">Your profile</string>
@@ -134,4 +133,5 @@
     <string name="notif_channel">Workout in progress</string>
     <string name="notif_in_progress">In progress</string>
     <string name="notif_tap_to_open">Tap to open DeskStride</string>
+    <string name="nav_open">Open menu</string>
 </resources>
