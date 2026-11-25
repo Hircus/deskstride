@@ -105,28 +105,28 @@ class MainActivity : AppCompatActivity(), Walk.Listener {
         btnHeight = findViewById(R.id.btnHeight)
         btnPause = findViewById(R.id.btnPause)
         btnScan = findViewById(R.id.btnScan)
-        btnPause.setOnClickListener { Walk.pause() }
-        btnScan.setOnClickListener { scanPerms.launch(bluetoothPerms) }
+        btnPause.onTap { Walk.pause() }
+        btnScan.onTap { scanPerms.launch(bluetoothPerms) }
 
-        findViewById<View>(R.id.btnHistory).setOnClickListener {
+        findViewById<View>(R.id.btnHistory).onTap {
             startActivity(Intent(this, HistoryActivity::class.java))
         }
-        btnFinish.setOnClickListener { Walk.stopAndFinish() }
-        btnStart.setOnClickListener { confirmStart() }
+        btnFinish.onTap { Walk.stopAndFinish() }
+        btnStart.onTap { confirmStart() }
         btnMinus.setRepeatListener({ Walk.stepSpeed(-0.1) }, Walk::commitSpeed)
         btnPlus.setRepeatListener({ Walk.stepSpeed(+0.1) }, Walk::commitSpeed)
-        target.setOnClickListener { askSpeed() }
-        btnConnect.setOnClickListener {
+        target.onTap { askSpeed() }
+        btnConnect.onTap {
             if (Walk.ble.active) Walk.disconnect() else blePerms.launch(connectPerms)
         }
-        btnHealth.setOnClickListener {
+        btnHealth.onTap {
             when {
                 !HealthWriter.available(this) -> Walk.showError(getString(R.string.error_hc_missing))
                 hcGranted -> HealthWriter.openAppPage(this)
                 else -> hcPerms.launch(HealthWriter.PERMISSIONS)
             }
         }
-        btnHeight.setOnClickListener { askProfile() }
+        btnHeight.onTap { askProfile() }
 
         Walk.listener = this
         // reopened mid-session: redraw the chart from what Walk has collected
@@ -318,7 +318,7 @@ class MainActivity : AppCompatActivity(), Walk.Listener {
         last.text = "${Fmt.shortDay(s.startMs)} · ${Fmt.duration(s.durationS)} · ${Fmt.km(s.distanceM)} km\n" +
             getString(R.string.steps_count, Fmt.int(s.steps)) + " · $hc"
         lastCard.visibility = View.VISIBLE
-        lastCard.setOnClickListener { startActivity(ReportActivity.intent(this, st.id)) }
+        lastCard.onTap { startActivity(ReportActivity.intent(this, st.id)) }
     }
 
     private fun refreshButtons() {

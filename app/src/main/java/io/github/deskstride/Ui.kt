@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.os.Handler
 import android.os.Looper
+import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
@@ -37,6 +38,12 @@ object Fmt {
     fun time(ms: Long): String = SimpleDateFormat("HH:mm", locale).format(Date(ms))
 }
 
+/** Click with a haptic tap (respects the system "touch feedback" setting). */
+fun View.onTap(action: () -> Unit) = setOnClickListener {
+    it.performHapticFeedback(HapticFeedbackConstants.CONTEXT_CLICK)
+    action()
+}
+
 /**
  * Tap = one step; holding repeats, speeding up. [onRelease] is called at the end
  * (release, cancel, or the button getting disabled while pressed).
@@ -50,6 +57,7 @@ fun View.setRepeatListener(onStep: () -> Unit, onRelease: () -> Unit) {
     val repeat = object : Runnable {
         override fun run() {
             if (!isEnabled) { end(); return }
+            performHapticFeedback(HapticFeedbackConstants.CLOCK_TICK)
             onStep()
             interval = maxOf(60L, (interval * 0.85).toLong())
             h.postDelayed(this, interval)
@@ -59,6 +67,7 @@ fun View.setRepeatListener(onStep: () -> Unit, onRelease: () -> Unit) {
         when (e.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
                 active = true; v.isPressed = true
+                v.performHapticFeedback(HapticFeedbackConstants.CONTEXT_CLICK)
                 onStep()
                 interval = 180L
                 h.postDelayed(repeat, 450L)
