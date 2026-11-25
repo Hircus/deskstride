@@ -82,7 +82,8 @@ class HealthWriter(private val ctx: Context) {
             ),
             SpeedRecord(
                 startTime = start, startZoneOffset = off, endTime = end, endZoneOffset = off,
-                samples = s.speedSamples.map {
+                // samples keep coming after the last movement (endMs): Health Connect rejects the whole insert
+                samples = s.speedSamples.filter { it.first in s.startMs..end.toEpochMilli() }.map {
                     SpeedRecord.Sample(Instant.ofEpochMilli(it.first), Velocity.kilometersPerHour(it.second))
                 },
                 metadata = meta("speed"),
@@ -98,7 +99,7 @@ class HealthWriter(private val ctx: Context) {
             startTime = start, startZoneOffset = off, endTime = end, endZoneOffset = off,
             count = s.steps.toLong(), metadata = meta("steps"),
         )
-        // Health Connect rejects samples outside the record's time range
+        // same range rule as speed
         val hr = s.hrSamples.filter { it.first in s.startMs..end.toEpochMilli() }
         if (hr.isNotEmpty()) records += HeartRateRecord(
             startTime = start, startZoneOffset = off, endTime = end, endZoneOffset = off,
